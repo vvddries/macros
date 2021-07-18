@@ -1,8 +1,5 @@
-/**
- * Locks all closed doors on the canvas
- * Author: orcnog
- */
- 
-canvas.walls.updateMany(canvas.scene.data.walls.map(w => {
-  return {_id: w._id, ds: w.ds === 0 ? 2 : w.ds};
-}));
+/*
+* Locks all closed doors on the canvas
+* Author: atropos, orcnog, vvddries
+*/
+canvas.scene.updateEmbeddedDocuments("Wall",canvas.scene.data.walls.map(w =>  {console.log(w.data.door); return {_id: w.id, ds: w.data.door === 1 ? 2 : 0}}));
